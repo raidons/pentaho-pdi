@@ -15,13 +15,18 @@ Exemplo de Execução de Transformatiom
 Exemplo de Execução do Spoon
    
     docker run -it --rm -v /tmp/.X11-unix/:/tmp/.X11-unix/:ro \
-	-v $1:/jobs \
-	-v $2:/output \
+	--memory=$1 \
+	-v $2:/jobs \
+	-v $3:/output \
 	-e START_MEN=1024m \
 	-e MAX_MEN=4096m \
 	-e XAUTH=$(xauth list|grep `uname -n` | cut -d ' ' -f5) -e "DISPLAY" \
-	--memory=$MAX_MEN --name spoon pentaho-pdi spoon
-
+	--name spoon pentaho-pdi spoon
+	
+	OBS: $1 ==> É o limite de memoria a ser usado no container e no proprio pentaho
+	     $2 ==> É o Diretorio onde sera mapeado o /job
+	     $3 ==> É o Diretorio onde sera mapeado o /output
+	
     OBS: 
         - Tenha certeza de estar com a imagem do pentaho criada em suas imagens com o nome de pentaho-pdi ou usando a imagem sandro3000/pentaho-pdi
             - Caso necessite buildar a imagem dentro no git https://github.com/raidons/pentaho-pdi esta a disposição os arquivos necessários para build da imagem do Pentaho 
