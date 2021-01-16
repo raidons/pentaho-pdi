@@ -7,7 +7,7 @@ CONTAINER_NAME=spoon
 is_running(){
 	#  Returns (echo) CONTAINER ID if container exists and is running, and
         # zero length string otherwise
-	id=$(docker ps -q -f status=running -f name=$CONTAINER_NAME)
+id=$(docker ps -q -f status=running -f name=$CONTAINER_NAME)
 	echo $id
 }
 
@@ -22,9 +22,9 @@ if [ -z $CONTAINER_ID ] ; then
 	-v $1:/jobs \
 	-v $2:/output \
 	-e START_MEN=1024m \
-	-e MAX_MEN=4096m \
+	-e MAX_MEN=6122 \
 	-e XAUTH=$(xauth list|grep `uname -n` | cut -d ' ' -f5) -e "DISPLAY" \
-	--memory=$MAX_MEN --name $CONTAINER_NAME $IMAGE spoon
+	--name $CONTAINER_NAME $IMAGE spoon
 else
 	echo Spoon already running \($CONTAINER_ID\).
 fi
