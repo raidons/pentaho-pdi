@@ -1,0 +1,8 @@
+# nome da conf do banco do ambiente atual (JDBC)
+DB_CONF=alias database
+
+# Diretorio de arquivos de jobs
+JOBS=/jobs
+
+# Diretório de saida de arquivos
+OUTPUT_PATH=/output
