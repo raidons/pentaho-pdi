@@ -22,6 +22,7 @@ if [ -z $CONTAINER_ID ] ; then
 	--memory=$1m \
 	-v $2:/jobs \
 	-v $3:/output \
+	-v $4:/downloadprod \
 	-e START_MEN=1024m \
 	-e MAX_MEN=$1m \
 	-e XAUTH=$(xauth list|grep `uname -n` | cut -d ' ' -f5) -e "DISPLAY" \

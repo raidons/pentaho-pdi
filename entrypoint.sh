@@ -25,7 +25,6 @@ run_pan() {
 }
 
 run_kitchen() {
-	./mountgs.sh
 	custom_properties
 	echo ./kitchen.sh -file $@
 	kitchen.sh -file /jobs/$@
